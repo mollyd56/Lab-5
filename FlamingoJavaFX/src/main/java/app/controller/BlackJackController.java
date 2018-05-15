@@ -364,14 +364,12 @@ public class BlackJackController implements Initializable {
 	private PathTransition CreatePathTransition(Point2D fromPoint, Point2D toPoint, ImageView img) {
 		Path path = new Path();
 
-		// TODO: Fix the Path transition. My Path looks terrible... do something cool :)
-
-		path.getElements().add(new MoveTo(fromPoint.getX(), fromPoint.getY()));
+		path.getElements().add(new MoveTo(fromPoint.getX()+30, fromPoint.getY()+40)); //changed this
 		path.getElements().add(new CubicCurveTo(toPoint.getX() * 2, toPoint.getY() * 2, toPoint.getX() / 3,
-				toPoint.getY() / 3, toPoint.getX(), toPoint.getY()));
-		// path.getElements().add(new CubicCurveTo(0, 120, 0, 240, 380, 240));
+				toPoint.getY() / 3, toPoint.getX()+30, toPoint.getY()+40)); //changed this
+		path.getElements().add(new CubicCurveTo(0, 120, 0, 240, 380, 240));
 		PathTransition pathTransition = new PathTransition();
-		pathTransition.setDuration(Duration.millis(750));
+		pathTransition.setDuration(Duration.millis(900)); //changed this
 		pathTransition.setPath(path);
 		pathTransition.setNode(img);
 		pathTransition.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
@@ -396,7 +394,7 @@ public class BlackJackController implements Initializable {
 
 		RotateTransition rotateTransition = new RotateTransition(Duration.millis(iAnimationLength / 2), img);
 		rotateTransition.setByAngle(180F);
-		rotateTransition.setCycleCount(2);
+		rotateTransition.setCycleCount(6); //changed this
 		rotateTransition.setAutoReverse(false);
 
 		return rotateTransition;
